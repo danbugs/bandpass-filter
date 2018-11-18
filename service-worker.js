@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/bandpassFilter/precache-manifest.d7c69dc1888ab9b91b90193d504379c6.js"
+  "/bandpassFilter/precache-manifest.5b4e971addf9602b0211b688849aa428.js"
 );
 
 workbox.clientsClaim();
