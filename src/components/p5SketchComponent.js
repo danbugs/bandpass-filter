@@ -4,6 +4,8 @@ import p5 from "../../node_modules/p5/";
 
 export default function sketch (p) {
     var sound;
+    var sound1;
+    var sound2;
     var fft;
     var w;
     var filter;
@@ -15,7 +17,10 @@ export default function sketch (p) {
     var isAllPass = false;
 
     p.preload = function () {
-        sound = p.loadSound('./myRecording.mp3'); 
+        sound1 = p.loadSound('./myRecording.mp3');
+        sound2 = p.loadSound('./earthInvaders_take2.wav');
+
+        sound = sound1;
     }
   
     p.setup = function () {
@@ -37,22 +42,21 @@ export default function sketch (p) {
         fft = new p5.FFT(.9, 512);
         w = p.width / 512;
         var buttonToggleSound = p.createButton('Toggle Sound');
-        buttonToggleSound.mousePressed(toggleSound);
+        buttonToggleSound.mouseClicked(toggleSound);
         var buttonToggleNoise = p.createButton('Toggle Noise');
-        buttonToggleNoise.mousePressed(toggleNoise);
-        var buttonDispose = p.createButton('Toggle Filter!');
-        buttonDispose.mousePressed(removeFilter);
+        buttonToggleNoise.mouseClicked(toggleNoise);
+        var buttonDispose = p.createButton('Toggle Filter');
+        buttonDispose.mouseClicked(removeFilter);
       
         p.createDiv('Set Cut Off Frequency: (default: 300Hz)');
         inputCutOffFrequency = p.createInput();
         var buttonSubmit = p.createButton('Cut off!');
-        buttonSubmit.mousePressed(submitCutOff);
+        buttonSubmit.mouseClicked(submitCutOff);
       
         p.createDiv('Set Resonance: (default: 10)');
         inputResonanceFrequency = p.createInput();
         var buttonSubmit2 = p.createButton('Resonate!');
-        buttonSubmit2.mousePressed(submitResonance);
-      
+        buttonSubmit2.mouseClicked(submitResonance);
       }
       
       function toggleNoise() {
