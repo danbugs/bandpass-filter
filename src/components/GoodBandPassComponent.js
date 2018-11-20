@@ -1,13 +1,11 @@
-import "../../node_modules/p5/lib/addons/p5.sound";
-import "../../node_modules/p5/lib/addons/p5.dom";
-import p5 from "../../node_modules/p5/";
+import "p5/lib/addons/p5.sound";
+import "p5/lib/addons/p5.dom";
+import p5 from "p5";
 
 export default function sketch (p) {
     var sound;
     var sound1;
-    var sound2;
     var fft;
-    var w;
     var filter;
     var noise;
     var filterFreq = 300;
@@ -18,8 +16,6 @@ export default function sketch (p) {
 
     p.preload = function () {
         sound1 = p.loadSound('./myRecording.mp3');
-        sound2 = p.loadSound('./earthInvaders_take2.wav');
-
         sound = sound1;
     }
   
@@ -40,7 +36,6 @@ export default function sketch (p) {
         noise.start();
 
         fft = new p5.FFT(.9, 512);
-        w = p.width / 512;
         var buttonToggleSound = p.createButton('Toggle Sound');
         buttonToggleSound.mouseClicked(toggleSound);
         var buttonToggleNoise = p.createButton('Toggle Noise');
@@ -75,12 +70,12 @@ export default function sketch (p) {
       }
       
       function submitCutOff() {
-        var cutOff = p.map(parseInt(inputCutOffFrequency.value()), 0, 1350, 10, 22500);
+        var cutOff = parseInt(inputCutOffFrequency.value());
         filterFreq = cutOff;
       }
       
       function submitResonance() {
-        var resonance = p.map(parseInt(inputResonanceFrequency.value()), 0, 100, 0, 1000);
+        var resonance = parseInt(inputResonanceFrequency.value());
         filterRes = resonance;
       }
       
@@ -103,10 +98,19 @@ export default function sketch (p) {
         p.noStroke();
         for(var i = 0; i < spectrum.length; i++)
         {
-          var amp = spectrum[i];
-          var y = p.map(amp, 0, 255, p.height, 0);
+          var x = p.map(p.log(i), 0, p.log(spectrum.length), 0, p.width);
+          var h = p.map(spectrum[i], 0, 255, 0, p.height);
+          var rectangle_width = (p.log(i+1)-p.log(i))*(p.width/p.log(spectrum.length));
           p.fill(i, 255, 255)
-          p.rect(i*w, y, w - 2, p.height-y);
+          p.rect(x, p.height, rectangle_width, -h )
+        }
+    };
+
+    var renderingFilter2 = false;
+
+    p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+        if (props.renderingFilter2){
+          p.remove();
         }
     };
   };
