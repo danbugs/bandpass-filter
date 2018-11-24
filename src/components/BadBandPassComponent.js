@@ -75,10 +75,12 @@ export default function sketch2 (p) {
                 {
                   hannWindow();
                 }
-              
+            
+
                 //draw the spectrum
                 for (var i = 0; i< spectrum.length; i++){
                   p.fill(255,i,255);
+                  console.log(spectrum[i]);
                   var x2 = p.map(i, 0, spectrum.length, p.width/2, p.width);
                   var h2 = p.map(spectrum[i], 0, 255, 0, p.height);
                   var rectangle_width = (p.width/spectrum.length);

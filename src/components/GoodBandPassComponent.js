@@ -106,7 +106,7 @@ export default function sketch (p) {
         }
     };
 
-    var renderingFilter2 = false;
+    // var renderingFilter2 = false;
 
     p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
         if (props.renderingFilter2){
