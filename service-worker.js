@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/bandpassFilter/precache-manifest.f43e0e4f63b93196d32372fbb5b2f2ca.js"
+  "/cool_bandpass_filter/precache-manifest.f43e0e4f63b93196d32372fbb5b2f2ca.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/bandpassFilter/index.html", {
+workbox.routing.registerNavigationRoute("/cool_bandpass_filter/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
