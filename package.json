@@ -2,7 +2,7 @@
   "name": "engr362_project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://chiarld.github.io/bandpassFilter",
+  "homepage": "http://danbugs.github.io/cool_bandpass_filter",
   "dependencies": {
     "bootstrap": "4.0.0",
     "font-awesome": "^4.7.0",
